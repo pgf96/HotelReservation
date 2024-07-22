@@ -27,6 +27,7 @@ export class AppComponent implements OnInit{
   request!:ReserveRoomRequest;
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
+  welcomeMessages$: Observable<any> | undefined;
 
     ngOnInit(){
       this.roomsearch= new FormGroup({
@@ -35,6 +36,8 @@ export class AppComponent implements OnInit{
       });
 
  //     this.rooms=ROOMS;
+      this.welcomeMessages$ = this.httpClient
+        .get(this.baseURL + `/welcome`)
 
 
     const roomsearchValueChanges$ = this.roomsearch.valueChanges;
