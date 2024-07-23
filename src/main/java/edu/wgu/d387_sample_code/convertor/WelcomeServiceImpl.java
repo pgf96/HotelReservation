@@ -19,11 +19,13 @@ public class WelcomeServiceImpl implements WelcomeService {
 
         Future<?> future1 = executor.submit(() -> {
             ResourceBundle messages = ResourceBundle.getBundle("welcome", Locale.ENGLISH);
+            System.out.println("current thread for en: " + Thread.currentThread().getName());
             welcomeMessages[0] = messages.getString("welcome");
         });
 
         Future<?> future2 = executor.submit(() -> {
             ResourceBundle messages = ResourceBundle.getBundle("welcome", Locale.CANADA_FRENCH);
+            System.out.println("current thread for fr: " + Thread.currentThread().getName());
             welcomeMessages[1] = messages.getString("welcome");
         });
 
